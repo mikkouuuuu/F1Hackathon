@@ -1,38 +1,29 @@
-﻿using F1Hack_api.Models;
+﻿using F1Hack_api.Controllers;
+using F1Hack_api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity;
 
 [ApiController]
 [Route("[controller]")]
-public class PredictionController : ControllerBase
+public class PredictionController : F1Controller
 {
-    private F1Context _context { get; }
-
-    public PredictionController(F1Context context)
+    public PredictionController(F1Context context) : base(context)
     {
-        _context = context;
-    }
-
-    [HttpGet]
-    [Route("GetUserPredictions")]
-    public IEnumerable<PredictionViewModel> Get(int userId)
-    {
-        return _context.Predictions.Where(x => x.UserId == userId).Select(x => x.ToViewModel());
     }
 
     [HttpPost]
-    [Route("AddUserPrediction")]
+    [Route("AddNew")]
     public void PostPrediction(PredictionEditModel prediction)
     {
         _context.Predictions.Add(prediction.ToEntity());
         _context.SaveChanges();
     }
 
-    [HttpPost]
-    [Route("AddPredictionGroup")]
-    public void PostPredictionGroup(PredictionGroupEditModel predictionGroup)
+    [HttpGet]
+    [Route("GetAllByUserId")]
+    public IEnumerable<PredictionViewModel> Get(int userId)
     {
-        _context.PredictionGroups.Add(predictionGroup.ToEntity());
-        _context.SaveChanges();
+        return _context.Predictions.Where(x => x.UserId == userId).Select(x => x.ToViewModel());
     }
 }

@@ -1,12 +1,14 @@
 ﻿using F1Hack_api.Entities;
+using F1Hack_api.Entities.Identiy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-public class F1Context : DbContext
+public class F1Context : IdentityDbContext<User, IdentityRole<int>, int>
 {
     public DbSet<Prediction> Predictions { get; set; }
     public DbSet<PredictionGroup> PredictionGroups { get; set; }
     public DbSet<PredictionValues> PredictionValues { get; set; }
-    public DbSet<User> Users { get; set; }
 
     public F1Context(DbContextOptions<F1Context> options) : base(options)
     {
@@ -29,5 +31,9 @@ public class F1Context : DbContext
             .HasOne(x => x.User)
             .WithMany(x => x.Predictions)
             .HasForeignKey(x => x.UserId);
+
+        builder.Entity<IdentityUserLogin<int>>().HasNoKey();
+        builder.Entity<IdentityUserRole<int>>().HasNoKey();
+        builder.Entity<IdentityUserToken<int>>().HasNoKey();
     }
 }
