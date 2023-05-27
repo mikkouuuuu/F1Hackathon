@@ -1,24 +1,36 @@
 ﻿using F1Hack_api;
 using F1Hack_api.Controllers;
+using F1Hack_api.Entities.Identiy;
 using F1Hack_api.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity;
+using System.Security.Claims;
 
 [ApiController]
 [Route("[controller]")]
 public class PredictionController : F1Controller
 {
-    public PredictionController(F1Context context) : base(context)
+    private UserManager<User> _userManager { get; }
+    public PredictionController(F1Context context, UserManager<User> userManager) : base(context)
     {
+        _userManager = userManager;
     }
 
     [HttpPost]
     [Route("AddNew")]
-    public void PostPrediction(PredictionEditModel prediction)
+    public IActionResult PostPrediction(PredictionEditModel prediction)
     {
-        _context.Predictions.Add(prediction.ToEntity());
-        _context.SaveChanges();
+        if (ModelState.IsValid)
+        {
+            var entity = prediction.ToEntity();
+            entity.UserId = Int32.Parse(_userManager.GetUserId(this.User));
+            _context.Predictions.Add(entity);
+            _context.SaveChanges();
+            return Ok();
+        }
+        return BadRequest();
     }
 
     [HttpGet]

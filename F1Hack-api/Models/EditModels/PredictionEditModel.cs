@@ -6,8 +6,6 @@ namespace F1Hack_api.Models
     public class PredictionEditModel
     {
         [Required]
-        public int UserId { get; set; }
-        [Required]
         public int PredictionGroupId { get; set; }
         public IEnumerable<PredictionValuesEditModel> PredictionValues { get; set; }
 
