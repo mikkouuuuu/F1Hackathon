@@ -30,9 +30,10 @@ namespace F1Hack_api.Controllers
                 if (!signInResult.Succeeded)
                 {
                     signInResult.Errors.ToList().ForEach(x => Console.WriteLine($"Error {x.Code}: {x.Description}."));
+                    return BadRequest($"Encountered errors while creating a new user: {string.Join(", ", signInResult.Errors.Select(x => x.Code))}.");
                 }
             }
-            return Ok();
+            return Ok($"New user {signInModel.UserName} added successfully.");
         }
 
         [HttpPost]
@@ -59,7 +60,7 @@ namespace F1Hack_api.Controllers
         public async Task<IActionResult> LogoutAsync()
         {
             await _signInManager.SignOutAsync();
-            return Ok();
+            return Ok("User logged out successfully.");
         }
     }
 }

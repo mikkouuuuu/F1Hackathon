@@ -14,10 +14,12 @@ namespace F1Hack_api.Controllers
 
         [HttpPost]
         [Route("AddNew")]
-        public void PostPredictionGroup(PredictionGroupEditModel predictionGroup)
+        public IActionResult PostPredictionGroup(PredictionGroupEditModel predictionGroup)
         {
-            _context.PredictionGroups.Add(predictionGroup.ToEntity());
+            var entity = predictionGroup.ToEntity();
+            _context.PredictionGroups.Add(entity);
             _context.SaveChanges();
+            return Ok($"Added new Prediction Group with ID {entity.Id}.");
         }
 
         [HttpGet]

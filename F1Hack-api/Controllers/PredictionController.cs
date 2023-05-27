@@ -28,9 +28,9 @@ public class PredictionController : F1Controller
             entity.UserId = Int32.Parse(_userManager.GetUserId(this.User));
             _context.Predictions.Add(entity);
             _context.SaveChanges();
-            return Ok();
+            return Ok($"Added new Prediction with ID {entity.Id}.");
         }
-        return BadRequest();
+        return BadRequest($"Invalid Prediction model.");
     }
 
     [HttpGet]
