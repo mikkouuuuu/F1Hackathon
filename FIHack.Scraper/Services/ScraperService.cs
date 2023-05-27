@@ -1,8 +1,11 @@
 ﻿using F1Hack_api.Entities.Identity;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace FIHack.Scraper.Services
@@ -18,20 +21,23 @@ namespace FIHack.Scraper.Services
             }
         }
 
-        public async Task GetDataOfTypeAsync<T>(int season)
+        public async Task<IEnumerable<T>> GetDataOfTypeAsync<T>(int season)
         {
             string urlToRequest = string.Empty;
             string jsonTokenToParse = string.Empty;
-            switch typeof(T)
+            if(typeof(T) == typeof(Driver))
             {
-                case Type t when t == typeof(Driver):
-                    urlToRequest = $"https://ergast.com/api/f1/{season}/drivers.json";
-                    jsonTokenToParse = "DriverTable";
-                    break;
-                default:
-
-            };
+                urlToRequest = $"https://ergast.com/api/f1/{season}/drivers.json";
+                jsonTokenToParse = "DriverTable";
+            }
             var dataJson = await ExecuteQueryAsync(urlToRequest);
+            if (!string.IsNullOrEmpty(dataJson))
+            {
+                var resultObject = new JObject(dataJson);
+                var entityJson = resultObject[jsonTokenToParse];
+                return entityJson?.ToObject<IEnumerable<T>>();
+            }
+            return null;
         }
     }
 }
