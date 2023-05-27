@@ -1,4 +1,5 @@
 ﻿using F1Hack_api.Entities;
+using F1Hack_api.Entities.Identiy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -30,5 +31,9 @@ public class F1Context : IdentityDbContext<User, IdentityRole<int>, int>
             .HasOne(x => x.User)
             .WithMany(x => x.Predictions)
             .HasForeignKey(x => x.UserId);
+
+        builder.Entity<IdentityUserLogin<int>>().HasNoKey();
+        builder.Entity<IdentityUserRole<int>>().HasNoKey();
+        builder.Entity<IdentityUserToken<int>>().HasNoKey();
     }
 }
