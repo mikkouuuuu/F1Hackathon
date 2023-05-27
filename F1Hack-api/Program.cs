@@ -18,21 +18,23 @@ builder.Services.AddDbContext<F1Context>(opt => opt.UseSqlServer(builder.Configu
 
 builder.Services.AddTransient<F1Context>();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddCors(opt =>
     {
         opt.AddPolicy("F1CorsPolicy", policy => {
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1");
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+                .AllowAnyMethod().AllowAnyHeader();
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1")
+                .AllowAnyMethod().AllowAnyHeader();
         });
     });
 }
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentity<User, IdentityRole<int>>()
     .AddEntityFrameworkStores<F1Context>();
