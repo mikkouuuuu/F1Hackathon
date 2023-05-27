@@ -38,8 +38,11 @@ Thumbs.db
 
 .suo*
 .vs*
+bin*
 F1Hack-api/.vs/F1Hack-api/v17/.suo
 F1Hack-api/.vs/F1Hack-api/DesignTimeBuild/.dtbcache.v2
 F1Hack-api/obj/F1Hack-api.csproj.nuget.g.props
 F1Hack-api/obj/Debug/net6.0/F1Hack-api.GeneratedMSBuildEditorConfig.editorconfig
 F1Hack-api/.vs/F1Hack-api/v17/.suo
+/F1Hack-api/.vs/F1Hack-api/v17/.suo
+/F1Hack-api/obj/Debug/net6.0
