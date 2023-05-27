@@ -13,6 +13,7 @@ namespace F1Hack_api.Models
         {
             return new Prediction()
             {
+                PredictionGroupId = PredictionGroupId,
                 PredictionValues = PredictionValues.Select(x => x.ToEntity())
             };
         }
