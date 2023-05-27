@@ -4,7 +4,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const LoginPage = () => {
-  axios.defaults.withCredentials = true;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigateTo = useNavigate();
