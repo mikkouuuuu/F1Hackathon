@@ -1,5 +1,5 @@
 ﻿using F1Hack_api.Entities;
-using F1Hack_api.Entities.Identiy;
+using F1Hack_api.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

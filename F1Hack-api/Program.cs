@@ -1,5 +1,5 @@
 using F1Hack_api;
-using F1Hack_api.Entities.Identiy;
+using F1Hack_api.Entities.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

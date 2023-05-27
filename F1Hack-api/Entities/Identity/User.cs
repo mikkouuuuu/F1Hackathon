@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace F1Hack_api.Entities.Identiy
+namespace F1Hack_api.Entities.Identity
 {
     public class User : IdentityUser<int>
     {

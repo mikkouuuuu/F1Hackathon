@@ -1,4 +1,4 @@
-﻿using F1Hack_api.Entities.Identiy;
+﻿using F1Hack_api.Entities.Identity;
 using F1Hack_api.Interfaces;
 using F1Hack_api.Models;
 using System.ComponentModel.DataAnnotations;
