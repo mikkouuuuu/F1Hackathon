@@ -8,6 +8,7 @@ namespace F1Hack_api.Entities
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [Required]
         public string UserName { get; set; }
         public virtual IEnumerable<Prediction> Predictions { get; set; }
     }

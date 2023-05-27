@@ -2,7 +2,7 @@
 
 namespace F1Hack_api.Controllers
 {
-    public abstract class F1Controller : Controller
+    public abstract class F1Controller : ControllerBase
     {
         protected F1Context _context { get; }
 
