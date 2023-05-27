@@ -22,7 +22,7 @@ if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddCors(opt =>
     {
-        opt.AddPolicy("F1CorsPolicy", policy => {
+        opt.AddDefaultPolicy(policy => {
             policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
                 .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1")
