@@ -24,9 +24,9 @@ if (builder.Environment.IsDevelopment())
     {
         opt.AddPolicy("F1CorsPolicy", policy => {
             policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
-                .AllowAnyMethod().AllowAnyHeader();
+                .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1")
-                .AllowAnyMethod().AllowAnyHeader();
+                .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
         });
     });
 }
