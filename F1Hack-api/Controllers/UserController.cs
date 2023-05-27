@@ -22,7 +22,11 @@ namespace F1Hack_api.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _userManager.CreateAsync(new User(signInModel.UserName), signInModel.Password);
+                var signInResult = await _userManager.CreateAsync(new User(signInModel.UserName), signInModel.Password);
+                if (!signInResult.Succeeded)
+                {
+                    signInResult.Errors.ToList().ForEach(x => Console.WriteLine($"Error {x.Code}: {x.Description}."));
+                }
             }
             return Ok();
         }
