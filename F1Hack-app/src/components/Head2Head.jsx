@@ -1,8 +1,12 @@
 import React from 'react';
+import Tabs from './Tabs';
 
 export const Head2Head = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className='grid justify-center '>
+    <Tabs/>
+    <div className="flex flex-col items-center mt-8 h-screen">
+    
       <h1 className="text-3xl font-bold mb-4">Head 2 Head</h1>
       <div className="bg-white p-4 rounded shadow-md">
         <div className="mb-4">
@@ -33,6 +37,7 @@ export const Head2Head = () => {
           Submit
         </button>
       </div>
+    </div>
     </div>
   );
 };

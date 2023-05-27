@@ -16,7 +16,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/Head2Head",
-    element: <Head2Head/>
+    element: 
+      <Head2Head/>
+  },
+  {
+    path: "/ErrorPage",
+    element: <ErrorPage/>
+
   }
 ]);
 
