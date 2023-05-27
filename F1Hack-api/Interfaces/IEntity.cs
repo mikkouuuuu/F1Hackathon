@@ -1,4 +1,7 @@
-﻿public interface IEntity
+﻿namespace F1Hack_api.Interfaces
 {
-    public int Id { get; set; }
+    public interface IEntity
+    {
+        public int Id { get; set; }
+    }
 }
