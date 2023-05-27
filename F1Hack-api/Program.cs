@@ -25,6 +25,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddIdentity<User, IdentityRole<int>>()
     .AddEntityFrameworkStores<F1Context>();
+    
+builder.Services.Configure<IdentityOptions>(opt =>
+{
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequireUppercase = false;
+});
 
 builder.Services.ConfigureApplicationCookie(opt => 
     { 
