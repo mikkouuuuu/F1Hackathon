@@ -13,16 +13,26 @@ public class PredictionController : ControllerBase
         _context = context;
     }
 
-    [HttpGet(Name = "GetUserPredictions")]
+    [HttpGet]
+    [Route("GetUserPredictions")]
     public IEnumerable<PredictionViewModel> Get(int userId)
     {
         return _context.Predictions.Where(x => x.UserId == userId).Select(x => x.ToViewModel());
     }
 
-    [HttpPost(Name = "AddUserPrediction")]
-    public void Post(PredictionEditModel prediction)
+    [HttpPost]
+    [Route("AddUserPrediction")]
+    public void PostPrediction(PredictionEditModel prediction)
     {
         _context.Predictions.Add(prediction.ToEntity());
+        _context.SaveChanges();
+    }
+
+    [HttpPost]
+    [Route("AddPredictionGroup")]
+    public void PostPredictionGroup(PredictionGroupEditModel predictionGroup)
+    {
+        _context.PredictionGroups.Add(predictionGroup.ToEntity());
         _context.SaveChanges();
     }
 }
