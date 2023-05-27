@@ -5,7 +5,6 @@ namespace F1Hack_api.Models
 {
     public class PredictionValuesEditModel
     {
-        public int PredictionId { get; set; }
         [Required]
         public string DescribingValue { get; set; }
         [Required]
@@ -15,7 +14,6 @@ namespace F1Hack_api.Models
         {
             return new PredictionValues()
             {
-                PredictionId = PredictionId,
                 DescribingValue = DescribingValue,
                 PredictionValue = PredictionValue
             };
