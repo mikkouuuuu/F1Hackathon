@@ -34,9 +34,37 @@ public class PredictionController : F1Controller
     }
 
     [HttpGet]
-    [Route("GetAllByUserId")]
-    public IEnumerable<PredictionViewModel> Get(int userId)
+    [Route("GetAll/ByUserId/{userId}")]
+    public IEnumerable<PredictionViewModel> GetAllByUserId(int userId)
     {
         return _context.Predictions.Where(x => x.UserId == userId).Select(x => x.ToViewModel());
+    }
+
+    [HttpGet]
+    [Route("GetAll/ByUserId/{userId}/{groupId}")]
+    public IEnumerable<PredictionViewModel> GetAllByUserId(int userId, int groupId)
+    {
+        return _context.Predictions.Where(x => x.UserId == userId && x.PredictionGroupId == groupId).Select(x => x.ToViewModel());
+    }
+
+    [HttpGet]
+    [Route("GetAll/ByDescribingValue/{describingValue}")]
+    public IEnumerable<PredictionViewModel> GetAllByDescribingValue(string describingValue)
+    {
+        return _context.Predictions.Where(x => x.PredictionValues.Any(x => x.DescribingValue == describingValue)).Select(x => x.ToViewModel());
+    }
+
+    [HttpGet]
+    [Route("GetAll/ByGroupId/{groupId}")]
+    public IEnumerable<PredictionViewModel> GetAllByDescribingValue(int groupId)
+    {
+        return _context.Predictions.Where(x => x.PredictionGroupId == groupId).Select(x => x.ToViewModel());
+    }
+
+    [HttpGet]
+    [Route("GetAll/ByGroupId/{groupId}/{describingValue}")]
+    public IEnumerable<PredictionViewModel> GetAllByDescribingValue(int groupId, string describingValue)
+    {
+        return _context.Predictions.Where(x => x.PredictionGroupId == groupId && x.PredictionValues.Any(x => x.DescribingValue == describingValue)).Select(x => x.ToViewModel());
     }
 }
