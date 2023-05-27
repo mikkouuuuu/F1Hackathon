@@ -1,10 +1,12 @@
 ﻿using F1Hack_api.Entities.Identiy;
 using F1Hack_api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace F1Hack_api.Controllers
 {
+    [AllowAnonymous]
     public class UserController : F1Controller
     {
         private SignInManager<User> _signInManager { get; }
@@ -12,6 +14,17 @@ namespace F1Hack_api.Controllers
 
         public UserController(F1Context context) : base(context)
         {
+        }
+
+        [HttpPost]
+        [Route("SignIn")]
+        public async Task<IActionResult> SignInAsync(UserLoginModel signInModel)
+        {
+            if (ModelState.IsValid)
+            {
+                await _userManager.CreateAsync(new User(signInModel.UserName), signInModel.Password);
+            }
+            return Ok();
         }
 
         [HttpPost]
