@@ -12,8 +12,10 @@ namespace F1Hack_api.Controllers
         private SignInManager<User> _signInManager { get; }
         private UserManager<User> _userManager { get; }
 
-        public UserController(F1Context context) : base(context)
+        public UserController(F1Context context, UserManager<User> userManager, SignInManager<User> signInManager) : base(context)
         {
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpPost]
