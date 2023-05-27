@@ -56,14 +56,14 @@ public class PredictionController : F1Controller
 
     [HttpGet]
     [Route("GetAll/ByGroupId/{groupId}")]
-    public IEnumerable<PredictionViewModel> GetAllByDescribingValue(int groupId)
+    public IEnumerable<PredictionViewModel> GetAllByGroupId(int groupId)
     {
         return _context.Predictions.Where(x => x.PredictionGroupId == groupId).Select(x => x.ToViewModel());
     }
 
     [HttpGet]
     [Route("GetAll/ByGroupId/{groupId}/{describingValue}")]
-    public IEnumerable<PredictionViewModel> GetAllByDescribingValue(int groupId, string describingValue)
+    public IEnumerable<PredictionViewModel> GetAllByGroupId(int groupId, string describingValue)
     {
         return _context.Predictions.Where(x => x.PredictionGroupId == groupId && x.PredictionValues.Any(x => x.DescribingValue == describingValue)).Select(x => x.ToViewModel());
     }

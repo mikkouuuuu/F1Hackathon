@@ -21,7 +21,7 @@ namespace F1Hack_api.Entities
         {
             return new PredictionViewModel()
             {
-                PredictionValues = PredictionValues.Select(x => x.ToViewModel()).ToList(),
+                PredictionValues = PredictionValues?.Select(x => x.ToViewModel()).ToList(),
             };
         }
     }
