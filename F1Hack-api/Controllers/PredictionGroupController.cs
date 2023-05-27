@@ -1,6 +1,5 @@
 ﻿using F1Hack_api.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace F1Hack_api.Controllers
 {

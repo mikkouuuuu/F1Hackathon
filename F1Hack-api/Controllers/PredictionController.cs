@@ -2,11 +2,8 @@
 using F1Hack_api.Controllers;
 using F1Hack_api.Entities.Identity;
 using F1Hack_api.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity;
-using System.Security.Claims;
 
 [ApiController]
 [Route("[controller]")]
