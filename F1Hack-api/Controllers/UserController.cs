@@ -23,10 +23,22 @@ namespace F1Hack_api.Controllers
                 var user = await _userManager.FindByNameAsync(loginModel.UserName);
                 if (user != null)
                 {
-                    var loginResult = await _signInManager.CheckPasswordSignInAsync(user, loginModel.Password, false);
+                    var loginResult = await _signInManager.PasswordSignInAsync(user, loginModel.Password, true, false);
+                    if (loginResult.Succeeded)
+                    {
+                        return Ok("Login succeeded!");
+                    }
                 }
             }
-            return Redirect("/Login");
+            return BadRequest("Invalid login attempt.");
+        }
+
+        [HttpPost]
+        [Route("Logout")]
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+            return Ok();
         }
     }
 }
