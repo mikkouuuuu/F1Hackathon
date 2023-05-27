@@ -24,6 +24,10 @@ namespace F1Hack_api
                 .HasForeignKey(p => p.PredictionId);
 
             builder.Entity<Prediction>()
+                .Navigation(x => x.PredictionValues)
+                .AutoInclude();
+
+            builder.Entity<Prediction>()
                 .HasOne(p => p.PredictionGroup)
                 .WithMany(p => p.Predictions)
                 .HasForeignKey(x => x.PredictionGroupId);
