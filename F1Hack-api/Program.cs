@@ -22,7 +22,7 @@ if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddCors(opt =>
     {
-        opt.AddDefaultPolicy(policy => {
+        opt.AddPolicy("F1CorsPolicy", policy => {
             policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
                 .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
             policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1")
@@ -63,6 +63,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("F1CorsPolicy");
 
 app.UseHttpsRedirection();
 
