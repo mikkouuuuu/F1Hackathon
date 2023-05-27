@@ -23,19 +23,15 @@ namespace FIHack.Scraper.Services
 
         public async Task<IEnumerable<T>> GetDataOfTypeAsync<T>(int season)
         {
-            string urlToRequest = string.Empty;
-            string jsonTokenToParse = string.Empty;
             if(typeof(T) == typeof(Driver))
             {
-                urlToRequest = $"https://ergast.com/api/f1/{season}/drivers.json";
-                jsonTokenToParse = "DriverTable";
-            }
-            var dataJson = await ExecuteQueryAsync(urlToRequest);
-            if (!string.IsNullOrEmpty(dataJson))
-            {
-                var resultObject = new JObject(dataJson);
-                var entityJson = resultObject[jsonTokenToParse];
-                return entityJson?.ToObject<IEnumerable<T>>();
+                var dataJson = await ExecuteQueryAsync($"https://ergast.com/api/f1/{season}/drivers.json");
+                if (!string.IsNullOrEmpty(dataJson))
+                {
+                    var resultObject = JObject.Parse(dataJson);
+                    var entityJson = resultObject["MRData"]["DriverTable"]["Drivers"];
+                    return entityJson?.ToObject<IEnumerable<T>>();
+                }
             }
             return null;
         }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FIHack.Scraper": {
+      "commandName": "Project",
+      "commandLineArgs": "2023"
+    }
+  }
+}
