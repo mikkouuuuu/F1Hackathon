@@ -18,9 +18,7 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddCors(opt =>
     {
         opt.AddPolicy("F1CorsPolicy", policy => {
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
-                .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1")
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost" || new Uri(origin).Host == "127.0.0.1")
                 .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
         });
     });
@@ -46,13 +44,12 @@ builder.Services.Configure<IdentityOptions>(opt =>
 builder.Services.ConfigureApplicationCookie(opt => 
 { 
     opt.Cookie.Name = "F1Cookie";
+    opt.Cookie.SameSite = SameSiteMode.None;
     opt.ExpireTimeSpan = TimeSpan.FromDays(1);
     opt.SlidingExpiration = true;
 });
 
 var app = builder.Build();
-
-app.UseCors("F1CorsPolicy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -60,6 +57,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("F1CorsPolicy");
 
 app.UseHttpsRedirection();
 
