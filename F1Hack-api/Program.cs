@@ -46,7 +46,7 @@ builder.Services.Configure<IdentityOptions>(opt =>
 builder.Services.ConfigureApplicationCookie(opt => 
 { 
     opt.Cookie.Name = "F1Cookie";
-    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    opt.Cookie.SecurePolicy = CookieSecurePolicy.None;
     opt.ExpireTimeSpan = TimeSpan.FromDays(1);
     opt.SlidingExpiration = true;
 });
