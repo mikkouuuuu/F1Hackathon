@@ -27,7 +27,7 @@ namespace FIHack.Scraper
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("F1HackDB"));
             using (var context = new F1Context(optionsBuilder.Options))
             {
-                await context.Set<T>().AddRangeAsync(entities);
+                await context.Set<T>().AddRangeAsync(entities.Where(x => !context.Set<T>().Any(y => y == x)));
                 return await context.SaveChangesAsync();
             }
         }
