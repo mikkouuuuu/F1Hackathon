@@ -18,9 +18,9 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddCors(opt =>
     {
         opt.AddPolicy("F1CorsPolicy", policy => {
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "http://localhost")
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
                 .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
-            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "http://127.0.0.1")
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1")
                 .AllowAnyMethod().AllowAnyHeader().AllowCredentials();
         });
     });
@@ -46,7 +46,8 @@ builder.Services.Configure<IdentityOptions>(opt =>
 builder.Services.ConfigureApplicationCookie(opt => 
 { 
     opt.Cookie.Name = "F1Cookie";
-    opt.Cookie.SecurePolicy = CookieSecurePolicy.None;
+    opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    opt.Cookie.SameSite = SameSiteMode.None;
     opt.ExpireTimeSpan = TimeSpan.FromDays(1);
     opt.SlidingExpiration = true;
 });
