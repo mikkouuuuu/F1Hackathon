@@ -1,4 +1,5 @@
-﻿using F1Hack_api.Controllers;
+﻿using F1Hack_api;
+using F1Hack_api.Controllers;
 using F1Hack_api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

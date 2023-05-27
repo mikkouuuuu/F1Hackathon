@@ -1,3 +1,4 @@
+using F1Hack_api;
 using F1Hack_api.Entities.Identiy;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
