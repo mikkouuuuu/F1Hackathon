@@ -1,37 +1,38 @@
 import React from 'react';
 
-const Head2Head = () => {
+export const Head2Head = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-3xl font-bold mb-4">Head2Head</h1>
-      
-      <div className="flex flex-col space-y-4">
-        <label htmlFor="driver1">driver 1:</label>
-        <select
-          id="driver1"
-          className="px-4 py-2 border rounded-md"
-          defaultValue="" // Placeholder value
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-3xl font-bold mb-4">Head 2 Head</h1>
+      <div className="bg-white p-4 rounded shadow-md">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Driver 1
+          </label>
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="name"
+            type="text"
+            placeholder=""
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Driver 2
+          </label>
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder=""
+          />
+        </div>
+        
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
         >
-          <option value="" disabled></option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </select>
-
-        <label htmlFor="driver2">driver 2:</label>
-        <select
-          id="driver2"
-          className="px-4 py-2 border rounded-md"
-          defaultValue="" // Placeholder value
-        >
-          <option value="" disabled></option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </select>
+          Submit
+        </button>
       </div>
     </div>
   );
 };
-
-export default Head2Head;

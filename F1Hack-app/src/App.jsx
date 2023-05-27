@@ -1,20 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Head2Head from './components/Head2Head'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import ErrorPage from './components/ErrorPage';
+import { Head2Head } from './components/Head2Head'
+import LoginPage from './components/LoginPage'
+import { Navbar } from './components/Navbar'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <LoginPage/>,
+    errorElement:<ErrorPage/>
+  },
+  {
+    path: "/Head2Head",
+    element: <Head2Head/>
+  }
+]);
 
 function App() {
 
   return (
     <>
-      <div>
-        <Header/>
-        <Head2Head/>
-        <Footer/>
-      </div>
+    <Navbar/>
+    {/* <Head2Head/> */}
+    <RouterProvider router={router} />
     </>
   )
 }
