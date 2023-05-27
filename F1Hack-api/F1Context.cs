@@ -8,7 +8,7 @@ public class F1Context : DbContext
     public DbSet<PredictionValues> PredictionValues { get; set; }
     public DbSet<User> Users { get; set; }
 
-    public F1Context()
+    public F1Context(DbContextOptions<F1Context> options) : base(options)
     {
 
     }
@@ -18,7 +18,7 @@ public class F1Context : DbContext
         builder.Entity<Prediction>()
             .HasMany(p => p.PredictionValues)
             .WithOne(p => p.Prediction)
-            .HasForeignKey(p => p.Prediction.Id);
+            .HasForeignKey(p => p.PredictionId);
 
         builder.Entity<Prediction>()
             .HasOne(p => p.PredictionGroup)
