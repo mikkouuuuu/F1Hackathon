@@ -10,6 +10,7 @@ namespace F1Hack_api
         public DbSet<Prediction> Predictions { get; set; }
         public DbSet<PredictionGroup> PredictionGroups { get; set; }
         public DbSet<PredictionValues> PredictionValues { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
 
         public F1Context(DbContextOptions<F1Context> options) : base(options)
         {
@@ -40,6 +41,9 @@ namespace F1Hack_api
             builder.Entity<IdentityUserLogin<int>>().HasNoKey();
             builder.Entity<IdentityUserRole<int>>().HasNoKey();
             builder.Entity<IdentityUserToken<int>>().HasNoKey();
+            
+            builder.Entity<Driver>().HasKey(x => x.DriverId);
+            builder.Entity<Driver>().Property(x => x.DriverId).ValueGeneratedNever();
         }
     }
 }

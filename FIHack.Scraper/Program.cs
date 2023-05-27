@@ -15,11 +15,11 @@ namespace FIHack.Scraper
             var service = new ScraperService();
             Console.WriteLine("Fetching Drivers...");
             var drivers = await service.GetDataOfTypeAsync<Driver>(season);
-            var addedAmount = AddEntitiesToDatabase(drivers);
+            var addedAmount = await AddEntitiesToDatabaseAsync(drivers);
             Console.WriteLine($"Added {addedAmount} new Drivers.");
         }
 
-        private static async Task<int> AddEntitiesToDatabase<T>(IEnumerable<T> entities)
+        private static async Task<int> AddEntitiesToDatabaseAsync<T>(IEnumerable<T> entities) where T : class
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             var configuration = builder.Build();
@@ -27,7 +27,7 @@ namespace FIHack.Scraper
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("F1HackDB"));
             using (var context = new F1Context(optionsBuilder.Options))
             {
-                await context.AddRangeAsync(entities);
+                await context.Set<T>().AddRangeAsync(entities);
                 return await context.SaveChangesAsync();
             }
         }
