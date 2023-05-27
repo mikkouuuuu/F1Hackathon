@@ -1,6 +1,10 @@
+using F1Hack_api.Entities.Identiy;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +21,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddIdentity<User, IdentityRole<int>>();
+
+builder.Services.ConfigureApplicationCookie(opt => 
+    { 
+        opt.Cookie.Name = "F1Cookie";
+        opt.ExpireTimeSpan = TimeSpan.FromDays(1);
+        opt.SlidingExpiration = true;
+    });
 
 var app = builder.Build();
 
