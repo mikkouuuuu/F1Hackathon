@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace F1Hack_api.Controllers
 {
     [AllowAnonymous]
+    [ApiController]
+    [Route("[controller]")]
     public class UserController : F1Controller
     {
         private SignInManager<User> _signInManager { get; }
