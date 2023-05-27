@@ -12,8 +12,8 @@ namespace F1Hack_api.Models
         {
             return new Prediction()
             {
-                PredictionValues = PredictionValues.Select(x => x.ToEntity());
-            }
+                PredictionValues = PredictionValues.Select(x => x.ToEntity())
+            };
         }
     }
 }
