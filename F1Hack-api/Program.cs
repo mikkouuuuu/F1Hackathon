@@ -23,6 +23,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(opt => 
+{
+    opt.AddPolicy("F1CorsPolicy", policy => {
+        policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
+    });
+});
+
 builder.Services.AddIdentity<User, IdentityRole<int>>()
     .AddEntityFrameworkStores<F1Context>();
     
