@@ -21,7 +21,7 @@ namespace FIHack.Scraper.Services
             }
         }
 
-        public async Task GetDataOfTypeAsync<T>(int season)
+        public async Task<IEnumerable<T>> GetDataOfTypeAsync<T>(int season)
         {
             string urlToRequest = string.Empty;
             string jsonTokenToParse = string.Empty;
@@ -34,8 +34,10 @@ namespace FIHack.Scraper.Services
             if (!string.IsNullOrEmpty(dataJson))
             {
                 var resultObject = new JObject(dataJson);
-                var entityJson = resultObject.Value<IEnumerable<JObject>>(jsonTokenToParse);
+                var entityJson = resultObject[jsonTokenToParse];
+                return entityJson?.ToObject<IEnumerable<T>>();
             }
+            return null;
         }
     }
 }
