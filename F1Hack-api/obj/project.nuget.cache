@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C+sEt7brDirqu3uUJ4zJUvBy0EUX5+VOwJwgEanc9VCrCGq/VaAWa3WzQU1IzJ7PNJvxeUCfLz5pnLMZrySgbA==",
+  "dgSpecHash": "UexcVzYLXKDaykzAMBWBg2SWdHA7blXCdyBK2hFrVYf4rNZlXI38zOq62TQb8I29pPEJ441kHH5UcmoIuji81Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MikkoM\\Source\\Repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj",
+  "projectFilePath": "C:\\Users\\MikkoM\\source\\repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MikkoM\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\MikkoM\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MikkoM\\Source\\Repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj": {}
+    "C:\\Users\\MikkoM\\source\\repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MikkoM\\Source\\Repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj": {
+    "C:\\Users\\MikkoM\\source\\repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MikkoM\\Source\\Repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj",
+        "projectUniqueName": "C:\\Users\\MikkoM\\source\\repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj",
         "projectName": "F1Hack-api",
-        "projectPath": "C:\\Users\\MikkoM\\Source\\Repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj",
+        "projectPath": "C:\\Users\\MikkoM\\source\\repos\\F1Hackathon\\F1Hack-api\\F1Hack-api.csproj",
         "packagesPath": "C:\\Users\\MikkoM\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MikkoM\\Source\\Repos\\F1Hackathon\\F1Hack-api\\obj\\",
+        "outputPath": "C:\\Users\\MikkoM\\source\\repos\\F1Hackathon\\F1Hack-api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MikkoM\\AppData\\Roaming\\NuGet\\NuGet.Config",
