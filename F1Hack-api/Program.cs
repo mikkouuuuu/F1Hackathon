@@ -23,13 +23,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(opt => 
+if (builder.Environment.IsDevelopment())
 {
-    opt.AddPolicy("F1CorsPolicy", policy => {
-        policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
-        policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1");
+    builder.Services.AddCors(opt =>
+    {
+        opt.AddPolicy("F1CorsPolicy", policy => {
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
+            policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "127.0.0.1");
+        });
     });
-});
+}
 
 builder.Services.AddIdentity<User, IdentityRole<int>>()
     .AddEntityFrameworkStores<F1Context>();
