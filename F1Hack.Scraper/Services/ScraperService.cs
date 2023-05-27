@@ -1,4 +1,4 @@
-﻿using F1Hack_api.Entities.Identity;
+﻿using F1Hack_api.Entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -30,6 +30,16 @@ namespace FIHack.Scraper.Services
                 {
                     var resultObject = JObject.Parse(dataJson);
                     var entityJson = resultObject["MRData"]["DriverTable"]["Drivers"];
+                    return entityJson?.ToObject<IEnumerable<T>>();
+                }
+            }
+            if (typeof(T) == typeof(Constructor))
+            {
+                var dataJson = await ExecuteQueryAsync($"https://ergast.com/api/f1/{season}/constructors.json");
+                if (!string.IsNullOrEmpty(dataJson))
+                {
+                    var resultObject = JObject.Parse(dataJson);
+                    var entityJson = resultObject["MRData"]["ConstructorTable"]["Constructors"];
                     return entityJson?.ToObject<IEnumerable<T>>();
                 }
             }

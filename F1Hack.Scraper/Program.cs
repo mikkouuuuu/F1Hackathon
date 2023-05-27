@@ -1,5 +1,5 @@
 ﻿using F1Hack_api;
-using F1Hack_api.Entities.Identity;
+using F1Hack_api.Entities;
 using FIHack.Scraper.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +17,10 @@ namespace FIHack.Scraper
             var drivers = await service.GetDataOfTypeAsync<Driver>(season);
             var addedAmount = await AddEntitiesToDatabaseAsync(drivers);
             Console.WriteLine($"Added {addedAmount} new Drivers.");
+            Console.WriteLine("Fetching Drivers...");
+            var constructors = await service.GetDataOfTypeAsync<Constructor>(season);
+            addedAmount = await AddEntitiesToDatabaseAsync(constructors);
+            Console.WriteLine($"Added {addedAmount} new Constructors.");
         }
 
         private static async Task<int> AddEntitiesToDatabaseAsync<T>(IEnumerable<T> entities) where T : class

@@ -1,6 +1,6 @@
 ﻿using F1Hack_api.Interfaces;
 
-namespace F1Hack_api.Entities.Identity
+namespace F1Hack_api.Entities
 {
 
     public class Driver
