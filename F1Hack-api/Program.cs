@@ -61,7 +61,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("F1CorsPolicy");
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
