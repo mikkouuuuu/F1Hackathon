@@ -52,14 +52,14 @@ builder.Services.ConfigureApplicationCookie(opt =>
 
 var app = builder.Build();
 
+app.UseCors("F1CorsPolicy");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseCors("F1CorsPolicy");
 
 app.UseHttpsRedirection();
 
